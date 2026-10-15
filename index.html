@@ -372,7 +372,8 @@
               <summary>What does a case include?</summary>
               <div class="details-body">
                 <ul>
-                  <li>The reported email and its headers</li>
+                  <li>A preview of the reported email, which opens automatically, plus a Headers tab with the useful fields</li>
+                  <li>Whether a reporter said they clicked a link or entered their password</li>
                   <li>Everyone who reported it</li>
                   <li>When it was first and last reported</li>
                   <li>Accounts Secured and the audit log</li>
@@ -386,7 +387,7 @@
               <div class="details-body">
                 <ul>
                   <li><strong>Needs Review:</strong> cases waiting for a person to choose an action</li>
-                  <li><strong>Processing:</strong> new reports CyberNut is still analyzing</li>
+                  <li><strong>Processing:</strong> cases where a clean-up is still running</li>
                   <li><strong>Quarantine, Spam, Safe, Restored, Ignored, and Deleted:</strong> cases after an action has been taken</li>
                 </ul>
                 <p>Quarantine, Spam, and Safe actions can be undone from their tab.</p>
@@ -406,6 +407,7 @@
             <div class="review-item"><strong>Timing</strong><span>Check the sent date plus the first and last report.</span></div>
             <div class="review-item"><strong>Verdict + risk score</strong><span>With ATT, use the verdict and score to understand the level of risk.</span></div>
             <div class="review-item"><strong>Key Evidence</strong><span>With ATT, see why the message was classified that way.</span></div>
+            <div class="review-item"><strong>What the reporter did</strong><span>See if anyone clicked a link or entered their password. The credentials at risk filter shows only cases where someone entered a password or logged into a page.</span></div>
             <div class="review-item"><strong>Accounts Secured + audit log</strong><span>See who received the email and what actions have already been taken.</span></div>
           </div>
         </div>
@@ -424,14 +426,15 @@
           <div class="action-card phish">
             <div class="situation">Confirmed phishing</div>
             <div class="action">Quarantine</div>
-            <p>Removes every matching copy from every inbox in your district. It can be restored.</p>
+            <p>Moves every matching copy to each user's Trash folder across your district. It can be restored for 30 days.</p>
             <details class="card-details">
               <summary>What happens when I quarantine?</summary>
               <div class="details-body">
                 <ul>
                   <li>It removes every email with the same sender and subject, including copies in inboxes of people who never reported it.</li>
                   <li>The action is recorded in the audit log.</li>
-                  <li>Quarantined email is held, not destroyed, so you can restore it if it turns out to be legitimate.</li>
+                  <li>Quarantined email goes to each user's Trash folder and is deleted automatically after 30 days. Restore it before then if it turns out to be legitimate.</li>
+                  <li>In the Action menu, this is Quarantine All Emails in the Case.</li>
                   <li>It does not block future email from the sender.</li>
                 </ul>
               </div>
@@ -444,14 +447,14 @@
             <details class="card-details">
               <summary>When should I use Delete?</summary>
               <div class="details-body">
-                Use Delete only when you're certain the email is harmful and no one will ever need it back. You'll be asked to type a confirmation first. If there's any doubt, choose Quarantine. It cleans up the same copies and can be undone.
+                Use Delete only when you're certain the email is harmful and no one will ever need it back. You'll be asked to type a confirmation first. If there's any doubt, choose Quarantine. It cleans up the same copies and can be undone. In the Action menu, this is Delete All Emails in the Case.
               </div>
             </details>
           </div>
           <div class="action-card spam">
             <div class="situation">Junk or unwanted mail</div>
             <div class="action">Review, then Mark Spam</div>
-            <p>Check that it's junk first. Staff often report real but unwanted mail.</p>
+            <p>Moves the email to the user's spam folder. Check that it's junk first.</p>
             <details class="card-details">
               <summary>Why review it first?</summary>
               <div class="details-body">
@@ -473,7 +476,7 @@
           <div class="action-card escalate">
             <div class="situation">You're not sure</div>
             <div class="action">Escalate</div>
-            <p>Flags the case so another admin can take a look.</p>
+            <p>Flags the case so another admin can take a look. Escalated cases are pinned to the top of Needs Review with a red badge.</p>
           </div>
           <div class="action-card search">
             <div class="situation">It may have spread further</div>
@@ -482,7 +485,7 @@
             <details class="card-details">
               <summary>What does the search do?</summary>
               <div class="details-body">
-                Quarantine and Delete already remove every copy with the same sender and subject, including from people who never reported it. Use Advanced Threat Search to find versions of the attack that don't match exactly. It only cleans up mail that already exists. Blocking future mail is a separate action.
+                Quarantine and Delete already remove every copy with the same sender and subject, including from people who never reported it. Use Advanced Threat Search to find versions of the attack that don't match exactly. Search by sender, subject, recipient mailbox, or message ID, and see how many mailboxes were searched and where copies were found. It only cleans up mail that already exists. Blocking future mail is a separate action.
               </div>
             </details>
           </div>
@@ -490,7 +493,7 @@
 
         <div class="banner">
           Several people reported the same email? Act on the case once. CyberNut groups matching reports together, so one action covers them all.
-          <div class="small">You can also select several cases and act on them at once.</div>
+          <div class="small">You can also select several cases and act on them at once. Read-only users can view cases but can't take actions.</div>
         </div>
       </section>
 
@@ -528,18 +531,18 @@
             <details class="card-details">
               <summary>Which action should I use?</summary>
               <div class="details-body">
-                Quarantine in almost every case. It removes the same copies as Delete and can be restored. Use Delete only when you're certain and want the email gone permanently.
+                Quarantine in almost every case. It removes the same copies as Delete and can be restored. Use Delete only when you're certain and want the email gone permanently. Removal typically finishes in under 5 minutes.
               </div>
             </details>
           </div>
           <div class="step">
             <div class="step-num">3</div>
             <h3>Search</h3>
-            <p>Open Advanced Threat Search from inside the case. The subject line fills in for you.</p>
+            <p>Open Advanced Threat Search from inside the case. It opens pre-filled with the case details.</p>
             <details class="card-details">
               <summary>What should I search?</summary>
               <div class="details-body">
-                Look for variations of the attack. Edit the subject or sender if the attacker changed them, and set the time frame to cover the original send date.
+                Look for variations of the attack. Search by sender, subject, recipient mailbox, or message ID. Searching by sender is often the fastest way to find every copy of a campaign. Set the time frame to cover the original send date.
               </div>
             </details>
           </div>
@@ -576,7 +579,6 @@
                 <li>Advanced Threat Search cleans up mail that already exists. To stop new mail from the sender, block the sender or domain separately. Domain blocking works for Microsoft 365 districts only.</li>
                 <li>If the phishing came from one of your own staff accounts, Compromised Account Detection can flag the account and suspend it within minutes.</li>
                 <li>On-premises Active Directory or Exchange: a directory sync can reactivate a suspended account about every 30 minutes. Suspend the account in your own directory too.</li>
-                <li>Google Workspace: if reinstating an account doesn't carry over to Google, reinstate it in the Google Admin Console.</li>
               </ul>
               <p><a class="link" href="https://knowledgebase.cybernut.com/cybernut-knowledge-base/what-happens-if-we-have-a-compromised-account" target="_blank" rel="noopener">What happens if we have a compromised account? →</a></p>
             </div>
@@ -596,19 +598,19 @@
 
         <div class="setup-grid">
           <div class="setup-card"><h3>Spam Verdict Labeling</h3><span class="rec on">Recommended on</span><div class="plan">All plans</div>
-            <details class="card-details"><summary>Why we recommend this</summary><div class="details-body">Automatically labels reported spam so your queue is easier to triage.<br><br><strong>Where:</strong> Settings → Threat Manager → Verdict Labeling</div></details>
+            <details class="card-details"><summary>Why we recommend this</summary><div class="details-body">Automatically labels reported spam so your queue is easier to triage. When you turn it on, you give CyberNut permission to analyze reported emails with AI.<br><br><strong>Where:</strong> Settings → Threat Manager → Verdict Labeling</div></details>
           </div>
           <div class="setup-card"><h3>Compromised Account Detection</h3><span class="rec on">Recommended on</span><div class="plan">All plans</div>
-            <details class="card-details"><summary>Why we recommend this</summary><div class="details-body">Helps identify when reported phishing may be coming from an internal account and alerts your admins.<br><br><strong>Where:</strong> Settings → Compromised Account Detection</div></details>
+            <details class="card-details"><summary>Why we recommend this</summary><div class="details-body">Flags an internal account when reported phishing sent from it scores at or above your threshold, and alerts your admins. Your threshold starts at 0, which flags every internal phishing verdict. Raise it to flag only higher-risk emails. Choose up to 10 addresses to receive alerts. If you leave the list empty, alerts go to the alerts address on your Report Button tab.<br><br><strong>Where:</strong> Settings → Compromised Account Detection</div></details>
           </div>
           <div class="setup-card"><h3>Auto-suspend compromised accounts</h3><span class="rec decision">District decision</span><div class="plan">All plans</div>
-            <details class="card-details"><summary>What to consider</summary><div class="details-body">Suspends a flagged account automatically. Use this when your district is comfortable allowing CyberNut to take immediate account action.<br><br><strong>Where:</strong> Settings → Compromised Account Detection</div></details>
+            <details class="card-details"><summary>What to consider</summary><div class="details-body">Locks a flagged account automatically on Google or Microsoft. The user has to contact IT to reset their password, and IT admins are notified. It uses the same threshold as detection, and reported emails from a suspended account are quarantined automatically. Add accounts that should never be locked to the exception list. They are still flagged and admins are still notified.<br><br><strong>Where:</strong> Settings → Compromised Account Detection</div></details>
           </div>
           <div class="setup-card"><h3>ATT auto-labeling</h3><span class="rec on">Recommended on</span><div class="plan">ATT add-on</div>
             <details class="card-details"><summary>Why we recommend this</summary><div class="details-body">Shows Phishing, Spam, and Legitimate verdicts and scores without automatically acting on them. It is a good first step before enabling auto-remediation.<br><br><strong>Where:</strong> Settings → Threat Manager → Verdict Labeling</div></details>
           </div>
           <div class="setup-card"><h3>Phishing auto-remediation</h3><span class="rec on">Recommended on, score 80</span><div class="plan">ATT add-on</div>
-            <details class="card-details"><summary>Why start at 80?</summary><div class="details-body">80 is the default and a good starting point. CyberNut automatically quarantines phishing cases scored 80 or higher and leaves the rest for manual review. You can set it anywhere from 70 to 100. Raise it if you want more cases reviewed by hand.<br><br><strong>Before this rule appears:</strong> turn on ATT auto-labeling, then the main Auto-Remediation switch.<br><br><strong>Where:</strong> Settings → Threat Manager → Auto-action rules, or the Auto-remediation button at the top of Reported Threats</div></details>
+            <details class="card-details"><summary>Why start at 80?</summary><div class="details-body">80 is the default and a good starting point. CyberNut automatically quarantines phishing cases scored 80 or higher and leaves the rest for manual review. You can set it anywhere from 70 to 100. Raise it if you want more cases reviewed by hand.<br><br><strong>Requires:</strong> ATT auto-labeling and the main Auto-Remediation switch turned on.<br><br><strong>Where:</strong> Settings → Threat Manager → Auto-action rules</div></details>
           </div>
           <div class="setup-card"><h3>Spam auto-remediation</h3><span class="rec decision">District decision</span><div class="plan">ATT add-on</div>
             <details class="card-details"><summary>What to consider</summary><div class="details-body">Turn this on to clear spam from your queue automatically. CyberNut acts only on the reported email itself and never sweeps other mailboxes. It acts only when the AI is at least 85 percent confident the email is spam. That threshold is fixed.<br><br><strong>Where:</strong> Settings → Threat Manager → Auto-action rules</div></details>
@@ -617,7 +619,7 @@
             <details class="card-details"><summary>What to consider</summary><div class="details-body">Turn this on to clear safe reports from your queue automatically. CyberNut acts only on the reported email itself and never sweeps other mailboxes. It acts only when the AI is at least 85 percent confident the email is safe. That threshold is fixed.<br><br><strong>Where:</strong> Settings → Threat Manager → Auto-action rules</div></details>
           </div>
         </div>
-        <div class="small" style="margin-top:10px">Anything an automation does can be undone from the Quarantine, Spam, or Safe tab.</div>
+        <div class="small" style="margin-top:10px">Anything an automation does can be undone from the Quarantine, Spam, or Safe tab. Quarantined email is deleted after 30 days.</div>
       </section>
 
       <section id="situations">
@@ -630,13 +632,14 @@
         </div>
 
         <div class="accordion">
-          <details><summary>Someone reported phishing</summary><div class="details-body"><p>Act fast, but confirm what you're looking at first.</p><ul><li>Open the case. Check the sender, the report count, and the sent date. With ATT, read the verdict and Key Evidence.</li><li>Quarantine the case. This removes every email with the same sender and subject from every inbox in your district, including people who didn't report it.</li><li>Check Accounts Secured to see how many inboxes were covered.</li><li>If the attacker used different subject lines or senders, use Advanced Threat Search to find those versions.</li><li>Quarantine doesn't block future email. If the sender keeps sending, block the sender or domain.</li></ul><p>With the Phishing rule on, cases at or above your score are quarantined for you. Spot-check the audit log.</p></div></details>
+          <details><summary>Someone reported phishing</summary><div class="details-body"><p>Act fast, but confirm what you're looking at first.</p><ul><li>Open the case. Check the sender, the report count, and the sent date. With ATT, read the verdict and Key Evidence.</li><li>Quarantine the case. This removes every email with the same sender and subject from every inbox in your district, including people who didn't report it.</li><li>Check Accounts Secured to see how many inboxes were covered.</li><li>If the attacker used different subject lines or senders, use Advanced Threat Search to find those versions.</li><li>Quarantine doesn't block future email. If the sender keeps sending, block the sender or domain.</li></ul><p>With the Phishing rule on, cases ATT labels Phishing at or above your score are quarantined for you. Spot-check the audit log.</p></div></details>
           <details><summary>Several employees reported the same email</summary><div class="details-body"><p>There's nothing extra to do. Reports with the same sender and subject are grouped into one case, and the Reports column shows how many people flagged it.</p><ul><li>One action covers every report, plus copies in inboxes of people who didn't report it.</li><li>Compare the first and last reported times. A recent last report means the email is still landing.</li><li>If the attacker changed the subject or sending address, each version shows up as its own case. Handle each one, or use Advanced Threat Search to find them together.</li></ul></div></details>
-          <details><summary>Someone reported a legitimate email</summary><div class="details-body"><p>Staff often report real email that looks unusual, like HR notices, stipend or payroll messages, and new vendor contacts.</p><ul><li>Open the email and confirm it's real. Check the sender address and headers, not just the content.</li><li>Choose Mark Safe if you trust the sender's whole domain. Mark Safe applies to the domain, not only this email.</li><li>If reporter notifications are turned on, the person who reported it gets an email letting them know it's safe.</li><li>CyberNut remembers your decision. If someone reports the same email again, it's resolved as safe automatically and your admins get a notification.</li></ul></div></details>
-          <details><summary>Someone reported spam</summary><div class="details-body"><p>Spam is unwanted, not dangerous. Newsletters, vendor marketing, and fundraiser blasts are the most common.</p><ul><li>Preview the email to make sure it's junk and not a phishing attempt dressed up as marketing.</li><li>If it's junk, choose Mark Spam. If reporter notifications are turned on, the reporter gets a confirmation email.</li><li>If it turns out to be phishing, Quarantine it instead.</li></ul><p>With the Spam rule on, CyberNut handles reported spam for you. It acts only on the reported email, and only when the AI is at least 85 percent confident it's spam.</p></div></details>
-          <details><summary>The attack may have reached more users</summary><div class="details-body"><p>Quarantining the case already removes every copy with the same sender and subject, including from people who never reported it. Attackers often vary their emails, though.</p><ul><li>Open Advanced Threat Search from inside the case. The subject line fills in for you.</li><li>Edit the subject or sender to catch versions the attacker changed.</li><li>Set the time frame to cover the original send date.</li><li>Quarantine what the search finds.</li><li>To stop new email from the attacker, block the sender or domain. Domain blocking works for Microsoft 365 districts only.</li></ul></div></details>
-          <details><summary>A trusted vendor sent one harmful email</summary><div class="details-body"><p>This usually means the vendor's account was compromised or spoofed. You want the harmful email gone without cutting off the vendor.</p><ul><li><strong>Quarantine (recommended):</strong> removes every copy with that sender and subject across your district. The email is held, not destroyed, so you can restore it if it turns out to be legitimate.</li><li><strong>Delete:</strong> removes the same copies permanently. They can't be restored, and you'll be asked to type a confirmation. Use it only when you're certain.</li><li>Neither action blocks the vendor. Their future email still arrives, so normal business continues.</li><li>Don't use Mark Safe. It would mark the harmful email safe and trust the vendor's whole domain.</li><li>Let the vendor know their account may be compromised.</li></ul></div></details>
-          <details><summary>An internal account is sending phishing</summary><div class="details-body"><p>When reported phishing traces back to one of your own accounts, Compromised Account Detection flags it and alerts your admins. With auto-suspend on, the account is suspended within minutes.</p><ul><li>Quarantine the related case to remove the emails from every inbox.</li><li>Reset the account's password and review its sign-in activity before you reinstate it.</li><li>On-premises Active Directory or Exchange: a directory sync can reactivate the account about every 30 minutes. Suspend it in your directory too.</li><li>Google Workspace: if reinstating doesn't carry over to Google, reinstate the account in the Google Admin Console.</li></ul></div></details>
+          <details><summary>Someone reported a legitimate email</summary><div class="details-body"><p>Staff often report real email that looks unusual, like HR notices, stipend or payroll messages, and new vendor contacts.</p><ul><li>Open the email and confirm it's real. Check the sender address and headers, not just the content.</li><li>Choose Mark Safe if you trust the sender's whole domain. Mark Safe applies to the domain, not only this email.</li><li>If reporter notifications are turned on, the person who reported it gets an email letting them know it's safe.</li><li>Cases you mark Safe stay Safe. If someone reports the same email again, the case isn't reopened or acted on, and it stays in the Safe tab.</li></ul></div></details>
+          <details><summary>Someone reported spam</summary><div class="details-body"><p>Spam is unwanted, not dangerous. Newsletters, vendor marketing, and fundraiser blasts are the most common.</p><ul><li>Preview the email to make sure it's junk and not a phishing attempt dressed up as marketing.</li><li>If it's junk, choose Mark Spam. CyberNut moves the email to the user's spam folder. If reporter notifications are turned on, the reporter gets a confirmation email.</li><li>Mark Spam works inside CyberNut only. It doesn't report the email to Google or Microsoft or train their spam filters.</li><li>If it turns out to be phishing, Quarantine it instead.</li></ul><p>With the Spam rule on, CyberNut handles reported spam for you. It acts only on the reported email, and only when the AI is at least 85 percent confident it's spam.</p></div></details>
+          <details><summary>The attack may have reached more users</summary><div class="details-body"><p>Quarantining the case already removes every copy with the same sender and subject, including from people who never reported it. Attackers often vary their emails, though.</p><ul><li>Open Advanced Threat Search from inside the case. It opens pre-filled with the case details.</li><li>Search by sender to catch every subject line the attacker used, or by subject to catch a changed sender. You can also search by recipient mailbox or message ID.</li><li>The results show how many mailboxes were searched and where copies were found.</li><li>Set the time frame to cover the original send date.</li><li>Quarantine what the search finds.</li><li>To stop new email from the attacker, block the sender or domain. Domain blocking works for Microsoft 365 districts only.</li></ul></div></details>
+          <details><summary>A trusted vendor sent one harmful email</summary><div class="details-body"><p>This usually means the vendor's account was compromised or spoofed. You want the harmful email gone without cutting off the vendor.</p><ul><li><strong>Quarantine (recommended):</strong> removes every copy with that sender and subject across your district. The email moves to each user's Trash folder, so you can restore it within 30 days if it turns out to be legitimate.</li><li><strong>Delete:</strong> removes the same copies permanently. They can't be restored, and you'll be asked to type a confirmation. Use it only when you're certain.</li><li>Neither action blocks the vendor. Their future email still arrives, so normal business continues.</li><li>Don't use Mark Safe. It would mark the harmful email safe and trust the vendor's whole domain.</li><li>Let the vendor know their account may be compromised.</li></ul></div></details>
+          <details><summary>Someone clicked a link or entered their password</summary><div class="details-body"><p>When a reporter says they clicked a link or entered their password, it shows on the case and on your dashboard. The credentials at risk filter shows only cases where someone entered a password or logged into a page.</p><ul><li>Quarantine the case so no one else clicks.</li><li>Force a password reset from the case. CyberNut asks you to confirm first.</li><li>The user gets a temporary password, is signed out of every session, and must change it the next time they sign in.</li><li>You see the temporary password once, so pass it on to the user right away.</li><li>Keep an eye on Compromised Accounts in case that account starts sending phishing.</li></ul></div></details>
+          <details><summary>An internal account is sending phishing</summary><div class="details-body"><p>When reported phishing traces back to one of your own accounts and scores at or above your threshold, Compromised Account Detection flags it and alerts your admins. With auto-suspend on, the account is locked automatically and the user has to contact IT to reset their password.</p><ul><li>Quarantine the related case to remove the emails from every inbox.</li><li>Reset the account's password and review its sign-in activity before you reinstate it.</li><li>On-premises Active Directory or Exchange: a directory sync can reactivate the account about every 30 minutes. Suspend it in your directory too.</li></ul></div></details>
         </div>
       </section>
 
@@ -654,7 +657,7 @@
           <div class="tip"><h3>Mark Safe trusts the domain</h3><p>Use it only when you trust the sender's whole domain.</p></div>
           <div class="tip"><h3>Look for variations</h3><p>Case actions cover every matching copy. Use Advanced Threat Search for versions with a different subject or sender.</p></div>
           <div class="tip"><h3>Search doesn't block future email</h3><p>Advanced Threat Search removes mail that already exists. Blocking the sender is a separate step.</p></div>
-          <div class="tip"><h3>Actions can be undone</h3><p>Quarantine, Spam, and Safe actions can be reversed. Delete is permanent.</p></div>
+          <div class="tip"><h3>Actions can be undone</h3><p>Quarantine can be reversed for 30 days, and Spam and Safe can be reversed too. Delete is permanent.</p></div>
         </div>
       </section>
 
